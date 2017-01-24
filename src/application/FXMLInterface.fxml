@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurInterface">
    <children>
-   	<Pane fx:id="fond" prefHeight="600.0" prefWidth="1000.0">
+   	<Pane fx:id="fond" onKeyPressed="#keyPressed" prefHeight="600.0" prefWidth="1000.0">
     	<children>
-	      <GridPane gridLinesVisible="true" layoutX="300.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0">
+	      <GridPane fx:id="grille" gridLinesVisible="true" layoutX="300.0" layoutY="100.0" onMouseDragged="#handleDragAction" prefHeight="400.0" prefWidth="400.0">
 	        <columnConstraints>
 	            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 	            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,7 +29,9 @@
 	      <Button layoutX="452.0" layoutY="529.0" mnemonicParsing="false" text="Multijoueur" />
 	      <Button layoutX="240.0" layoutY="529.0" mnemonicParsing="false" text="Nouvelle partie" />
 	      <Button layoutX="675.0" layoutY="529.0" mnemonicParsing="false" text="Aide" />
-	      <Label layoutX="470.0" layoutY="31.0" prefHeight="21.0" prefWidth="61.0" text="Score :" />
+	      <Label alignment="CENTER" layoutX="407.0" layoutY="42.0" text="Score :" />
+	      <Label fx:id="score" layoutX="470.0" layoutY="42.0" prefHeight="21.0" prefWidth="61.0" text="0" />
+            <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" prefHeight="21.0" prefWidth="640.0" text="z pour aller vers le haut, s vers le bas, d vers la droite et q vers la gauche" />
 	     </children>
       </Pane>
    </children>
