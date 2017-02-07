@@ -1,15 +1,19 @@
 package application;
 
+import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import vue.Grille;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-
+import modele.Parametres;
 
 public class Main extends Application {
-	 @Override
+	//public static Parent root = new Parent() ;
+	@Override
 	    public void start(Stage stage) throws Exception {
 	        Parent root = FXMLLoader.load(getClass().getResource("FXMLInterface.fxml"));
 
@@ -19,6 +23,9 @@ public class Main extends Application {
 
 	        stage.setScene(scene);
 	        stage.show();
+
+	        Grille g = new Grille();
+	        boolean b = g.nouvelleCase();
 	    }
 
 	    /**

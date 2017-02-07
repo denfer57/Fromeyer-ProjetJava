@@ -1,7 +1,10 @@
 package controleur;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -12,45 +15,51 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import vue.Case;
+import vue.Grille;
+import vue.Tuile;
+import modele.Parametres;
 
 public class ControleurInterface implements Initializable {
+    //@FXML
+    //private Label score;
     @FXML
-    private Label score;
+	public GridPane grille;
     @FXML
-    private GridPane grille;
-    @FXML
-    private Pane fond; // panneau recouvrant toute la fenêtre
+    public Pane fond;
+    public static Pane pane;
+    public static GridPane g;
 
-    // variables globales non définies dans la vue (fichier .fxml)
-    private final Pane p = new Pane(); // panneau utilisé pour dessiner une tuile "2"
-    private final Label c = new Label("2");
-    private int x = 300, y = 100;
-    private int objectifx = 300, objectify = 100;
+    public GridPane getGrille() {
+		return this.grille;
+	}
 
-    @Override
+	public void setGrille(GridPane grille) {
+		this.grille = grille;
+	}
+
+	public Pane getFond() {
+		return this.fond;
+	}
+
+	public void setFond(Pane fond) {
+		this.fond = fond;
+	}
+
+	@Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("le contrôleur initialise la vue");
-        // utilisation de styles pour la grille et la tuile (voir styles.css)
-        p.getStyleClass().add("pane");
-        c.getStyleClass().add("tuile");
-        grille.getStyleClass().add("gridpane");
-        GridPane.setHalignment(c, HPos.CENTER);
-        fond.getChildren().add(p);
-        p.getChildren().add(c);
+		this.pane=this.fond;
+		this.g=this.grille;
 
-        // on place la tuile en précisant les coordonnées (x,y) du coin supérieur gauche
-        p.setLayoutX(x);
-        p.setLayoutY(y);
-        p.setVisible(true);
-        c.setVisible(true);
+        grille.getStyleClass().add("gridpane");
     }
 
     /*
      * Méthodes listeners pour gérer les événements (portent les mêmes noms que
      * dans Scene Builder
      */
-    @FXML
+   /* @FXML
     private void handleDragAction(MouseEvent event) {
         System.out.println("Glisser/déposer sur la grille avec la souris");
         double x = event.getX();//translation en abscisse
@@ -65,7 +74,7 @@ public class ControleurInterface implements Initializable {
                  if (tuile != null) {
                  int rowIndex = GridPane.getRowIndex(tuile);
                  int rowEnd = GridPane.getRowIndex(tuile);
-                 }*/
+                 }
                 // }
             }
         } else if (x < y) {
@@ -89,7 +98,7 @@ public class ControleurInterface implements Initializable {
 
     @FXML
     public void keyPressed(KeyEvent ke) {
-        System.out.println("touche appuyée");
+        System.out.println("touche appuy�e");
         String touche = ke.getText();
         if (touche.compareTo("q") == 0) { // utilisateur appuie sur "q" pour envoyer la tuile vers la gauche
             if (objectifx > 300) { // possible uniquement si on est pas dans la colonne la plus à gauche
@@ -111,8 +120,8 @@ public class ControleurInterface implements Initializable {
         }
         else if (touche.compareTo("s") == 0) { // utilisateur appuie sur "d" pour envoyer la tuile vers la droite
         	if (objectify < 400) { // possible uniquement si on est pas dans la colonne la plus à droite (taille de la fenêtre - 2*taille d'une case - taille entre la grille et le bord de la fenêtre)
-                        objectify += (int) 300;
-                        score.setText(Integer.toString(Integer.parseInt(score.getText()) + 1));
+                    objectify += (int) 300;
+                    score.setText(Integer.toString(Integer.parseInt(score.getText()) + 1));
         	}
         }
         System.out.println("objectifx=" + objectifx);
@@ -162,5 +171,5 @@ public class ControleurInterface implements Initializable {
         Thread th = new Thread(task); // on crée un contrôleur de Thread
         th.setDaemon(true); // le Thread s'exécutera en arrière-plan (démon informatique)
         th.start(); // et on exécute le Thread pour mettre à jour la vue (déplacement continu de la tuile horizontalement)
-    }
+    }*/
 }
