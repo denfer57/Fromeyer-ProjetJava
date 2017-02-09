@@ -21,8 +21,8 @@ import vue.Tuile;
 import modele.Parametres;
 
 public class ControleurInterface implements Initializable {
-    //@FXML
-    //private Label score;
+    @FXML
+    private Label score;
     @FXML
 	public GridPane grille;
     @FXML
@@ -51,7 +51,7 @@ public class ControleurInterface implements Initializable {
         // TODO
 		this.pane=this.fond;
 		this.g=this.grille;
-
+		System.out.println(pane);
         grille.getStyleClass().add("gridpane");
     }
 
@@ -95,10 +95,38 @@ public class ControleurInterface implements Initializable {
     private void handleButtonAction(MouseEvent event) {
         System.out.println("Clic de souris sur le bouton menu");
     }
-
+*/
     @FXML
     public void keyPressed(KeyEvent ke) {
-        System.out.println("touche appuy�e");
+    	int direction = 0;
+    	String touche = ke.getText();
+    	if (touche.compareTo("q") == 0){
+    		direction = Parametres.GAUCHE;
+    		System.out.println("Deplacement vers la gauche");
+    	}
+    	if (touche.compareTo("d") == 0){
+    		direction = Parametres.DROITE;
+    		System.out.println("Deplacement vers la droite");
+    	}
+    	if (touche.compareTo("z") == 0){
+    		System.out.println("Deplacement vers le haut");
+    		direction = Parametres.HAUT;
+    	}
+    	if (touche.compareTo("s") == 0){
+    		System.out.println("Deplacement vers le bas");
+    		direction = Parametres.BAS;
+    	}
+    	else System.out.println("Vous devez appuyez sur d pour Droite, g pour Gauche, h pour Haut ou b pour Bas");
+
+    	boolean b2 = application.Main.g.lanceurDeplacerCases(direction);
+        if (b2) {
+        	application.Main.b = application.Main.g.nouvelleCase();
+            if (!application.Main.b) application.Main.g.gameOver();
+        }
+        System.out.println(application.Main.g);
+        if (application.Main.g.getValeurMax()>=Parametres.OBJECTIF) application.Main.g.victory();
+
+        /*System.out.println("touche appuy�e");
         String touche = ke.getText();
         if (touche.compareTo("q") == 0) { // utilisateur appuie sur "q" pour envoyer la tuile vers la gauche
             if (objectifx > 300) { // possible uniquement si on est pas dans la colonne la plus à gauche
@@ -170,6 +198,6 @@ public class ControleurInterface implements Initializable {
         };
         Thread th = new Thread(task); // on crée un contrôleur de Thread
         th.setDaemon(true); // le Thread s'exécutera en arrière-plan (démon informatique)
-        th.start(); // et on exécute le Thread pour mettre à jour la vue (déplacement continu de la tuile horizontalement)
-    }*/
+        th.start(); // et on exécute le Thread pour mettre à jour la vue (déplacement continu de la tuile horizontalement)*/
+    }
 }

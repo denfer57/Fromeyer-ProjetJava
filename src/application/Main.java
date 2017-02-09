@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import vue.Grille;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import vue.Grille;
 import modele.Parametres;
 
-public class Main extends Application {
+public class Main extends Application implements Parametres {
+	public static Grille g;
+    public static boolean b;
+
 	//public static Parent root = new Parent() ;
 	@Override
 	    public void start(Stage stage) throws Exception {
@@ -24,8 +26,10 @@ public class Main extends Application {
 	        stage.setScene(scene);
 	        stage.show();
 
-	        Grille g = new Grille();
-	        boolean b = g.nouvelleCase();
+	        g = new Grille();
+	        b = g.nouvelleCase();
+	        b = g.nouvelleCase();
+	        System.out.println(g);
 	    }
 
 	    /**
