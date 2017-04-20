@@ -4,18 +4,24 @@
  * and open the template in the editor.
  */
 package vue;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import modele.Parametres;
 /**
  *
  * @author Sylvain
  */
 public class Case implements Parametres {
-
     private int x, y, valeur;
-    private Grille grille;
-    //private Tuile t;
+    public Grille grille;
+    public Pane p;
+    public Label l = new Label();
 
-    public Case(int abs, int ord, int v) {
+    public Grille getGrille() {
+		return grille;
+	}
+
+	public Case(int abs, int ord, int v) {
         this.x = abs;
         this.y = ord;
         this.valeur = v;
@@ -23,26 +29,66 @@ public class Case implements Parametres {
 
     public void setGrille(Grille g) {
         this.grille = g;
-        Tuile t = new Tuile(x, y, valeur);
+        creerTuiles(x,y,valeur);
     }
 
-    public int getX() {
-        return this.x;
+    private void creerTuiles(int x, int y, int v) {
+		// TODO Auto-generated method stub
+    	p = new Pane();
+
+        p.getStyleClass().add("pane");
+        l.getStyleClass().add("tuile");
+
+        controleur.ControleurInterface.pane.getChildren().add(p);
+        l.setText(Integer.toString(v));
+        p.getChildren().add(l);
+
+        x = (x * 100) + 300;
+        y = (y * 100) + 100;
+        p.setTranslateX(x);
+        p.setTranslateY(y);
+
+        p.setVisible(true);
+        l.setVisible(true);
+        //System.out.println(x);
+        //System.out.println(y);
+	}
+
+    public void modifTuiles(Case c){
+    	c.setP(p);
+    	int v = c.getValeur();
+    	l.setText(Integer.toString(v));
     }
 
-    public int getY() {
-        return this.y;
+    public Pane RecupereUneCase(){
+		return p;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
+    public Pane getP() {
+		return p;
+	}
 
-    public void setY(int y) {
-        this.y = y;
-    }
+	public void setP(Pane p) {
+		this.p = p;
+	}
 
-    public void setValeur(int valeur) {
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public void setValeur(int valeur) {
         this.valeur = valeur;
     }
 

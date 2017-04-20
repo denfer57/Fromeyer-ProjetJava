@@ -12,7 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class Tuile {
-    private Pane p;
+    public static Pane p;
+    public static int x, y, valeur;
 
     public Tuile(int abs, int ord, int v) {
         // TODO Auto-generated constructor stub
@@ -26,14 +27,28 @@ public class Tuile {
 
         p.getChildren().add(c);
 
-       	p.setLayoutX(abs*100+300);
-       	p.setLayoutY(ord*100+100);
+        abs = (abs * 100) + 300;
+        ord = (ord * 100) + 100;
+
+       	p.setLayoutX(abs);
+       	p.setLayoutY(ord);
 
        	p.setVisible(true);
        	c.setVisible(true);
+       	x = abs;
+       	y = ord;
+       	valeur = v;
 
-       	//System.out.println(abs);
-       	//System.out.println(ord);
+       	System.out.println(abs);
+       	System.out.println(ord);
+	}
+
+	public Pane getP() {
+		return p;
+	}
+
+	public void setP(Pane p) {
+		this.p = p;
 	}
 
 }

@@ -11,10 +11,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 
-/**
- *
- * @author Sylvain
- */
+
 public class Grille implements Parametres {
 
     private final HashSet<Case> grille;
@@ -102,6 +99,7 @@ public class Grille implements Parametres {
         c.setValeur(c.getValeur() * 2);
         if (this.valeurMax < c.getValeur()) {
             this.valeurMax = c.getValeur();
+            c.modifTuiles(c);
         }
         deplacement = true;
     }

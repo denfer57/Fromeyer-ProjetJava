@@ -11,8 +11,6 @@ import vue.Grille;
 import modele.Parametres;
 
 public class Main extends Application implements Parametres {
-	public static Grille g;
-    public static boolean b;
 
 	//public static Parent root = new Parent() ;
 	@Override
@@ -25,11 +23,6 @@ public class Main extends Application implements Parametres {
 
 	        stage.setScene(scene);
 	        stage.show();
-
-	        g = new Grille();
-	        b = g.nouvelleCase();
-	        b = g.nouvelleCase();
-	        System.out.println(g);
 	    }
 
 	    /**
