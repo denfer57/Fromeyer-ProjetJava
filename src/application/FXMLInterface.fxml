@@ -28,7 +28,7 @@
 	      </GridPane>
 	      <Button layoutX="452.0" layoutY="529.0" mnemonicParsing="false" text="Multijoueur" />
 	      <Button layoutX="240.0" layoutY="529.0" mnemonicParsing="false" text="Nouvelle partie" />
-	      <Button layoutX="675.0" layoutY="529.0" mnemonicParsing="false" text="Aide" />
+	      <Button fx:id="save" layoutX="675.0" layoutY="529.0" mnemonicParsing="false" text="Sauvegarder" />
 	      <Label alignment="CENTER" layoutX="407.0" layoutY="42.0" text="Score :" />
 	      <Label fx:id="score" layoutX="470.0" layoutY="42.0" prefHeight="21.0" prefWidth="61.0" text="0" />
             <Label alignment="CENTER" layoutX="180.0" layoutY="14.0" prefHeight="21.0" prefWidth="640.0" text="z pour aller vers le haut, s vers le bas, d vers la droite et q vers la gauche" />

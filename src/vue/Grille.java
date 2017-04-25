@@ -5,6 +5,8 @@
  */
 package vue;
 import modele.Parametres;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,7 +14,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 
-public class Grille implements Parametres {
+public class Grille implements Parametres, Serializable  {
 
     private final HashSet<Case> grille;
     private int valeurMax = 0;
@@ -194,7 +196,7 @@ public class Grille implements Parametres {
             ArrayList<Case> casesLibres = new ArrayList<>();
             Random ra = new Random();
             int valeur = (1 + ra.nextInt(2)) * 2;
-            // on crée toutes les cases encore libres
+            // on crï¿½e toutes les cases encore libres
             for (int x = 0; x < TAILLE; x++) {
                 for (int y = 0; y < TAILLE; y++) {
                     Case c = new Case(x, y, valeur);

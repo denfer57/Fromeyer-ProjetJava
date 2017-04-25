@@ -1,13 +1,11 @@
 package application;
 
-import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import vue.Grille;
 import modele.Parametres;
 
 public class Main extends Application implements Parametres {

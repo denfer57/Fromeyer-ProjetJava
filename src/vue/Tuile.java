@@ -43,10 +43,18 @@ public class Tuile {
        	System.out.println(ord);
 	}
 
+    /**
+     * 
+     * @return le pane actuel
+     */
 	public Pane getP() {
 		return p;
 	}
 
+	/**
+	 * 
+	 * @param le pane a fixer
+	 */
 	public void setP(Pane p) {
 		this.p = p;
 	}
